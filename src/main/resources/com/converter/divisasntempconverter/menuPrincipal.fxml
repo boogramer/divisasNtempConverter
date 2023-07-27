@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -51,11 +53,17 @@
                                  <image>
                                     <Image url="@../../../images/arrows.png" />
                                  </image>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
                               </ImageView>
                            </graphic>
                            <tooltip>
                               <Tooltip text="Intercambiar" />
                            </tooltip>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
                         </Label>
                      </children>
                   </AnchorPane>
@@ -70,7 +78,7 @@
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <TextArea layoutX="243.0" layoutY="38.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="37.0" prefWidth="114.0" promptText="120">
+                        <TextArea fx:id="inputTemp_txtA" layoutX="243.0" layoutY="38.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="37.0" prefWidth="114.0" promptText="120">
                            <font>
                               <Font size="13.0" />
                            </font></TextArea>
@@ -82,19 +90,19 @@
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <Label layoutX="177.0" layoutY="189.0" prefHeight="29.0" prefWidth="76.0" text="Label" />
+                        <Label fx:id="grCel_lab" layoutX="177.0" layoutY="189.0" prefHeight="29.0" prefWidth="76.0" />
                         <Text layoutX="299.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grados Celsius">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <Label layoutX="177.0" layoutY="229.0" prefHeight="29.0" prefWidth="76.0" text="Label" />
+                        <Label fx:id="grFa_lab" layoutX="177.0" layoutY="229.0" prefHeight="29.0" prefWidth="76.0" />
                         <Text layoutX="299.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grados Fahrenheit">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <Label layoutX="177.0" layoutY="271.0" prefHeight="29.0" prefWidth="76.0" text="Label" />
+                        <Label fx:id="kelvin_lab" layoutX="177.0" layoutY="271.0" prefHeight="29.0" prefWidth="76.0" />
                         <Text layoutX="299.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kelvin">
                            <font>
                               <Font name="Consolas" size="14.0" />
@@ -107,4 +115,7 @@
         </tabs>
       </TabPane>
    </children>
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
 </StackPane>

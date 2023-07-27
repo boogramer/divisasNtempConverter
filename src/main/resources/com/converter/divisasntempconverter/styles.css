@@ -1,0 +1,9 @@
+#grCel_lab, #grFa_lab, #kelvin_lab {
+    -fx-border-color: grey;
+    -fx-background-color: #edede9;
+    -fx-border-width: 1;
+}
+
+#inputTemp_txtA .scroll-pane .content .text {
+    -fx-text-alignment: center;
+}
