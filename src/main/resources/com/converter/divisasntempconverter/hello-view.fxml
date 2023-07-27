@@ -15,12 +15,11 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane fx:id="mainDashboard_Sp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.converter.divisasntempconverter.HelloController">
    <children>
-      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="dashboard_tp" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Bienvenido">
+          <Tab fx:id="bienvenido_tab" text="Bienvenido">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -33,7 +32,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Conversor de Divisas">
+          <Tab fx:id="convDiv_tab" text="Conversor de Divisas">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -42,13 +41,13 @@
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <ChoiceBox layoutX="16.0" layoutY="61.0" prefHeight="25.0" prefWidth="222.0" />
-                        <TextField layoutX="16.0" layoutY="112.0" prefHeight="160.0" prefWidth="224.0" />
-                        <ChoiceBox layoutX="368.0" layoutY="61.0" prefHeight="25.0" prefWidth="216.0" />
-                        <TextField layoutX="370.0" layoutY="112.0" prefHeight="160.0" prefWidth="213.0" />
+                        <ChoiceBox fx:id="monedaOr_choicebx" layoutX="16.0" layoutY="61.0" prefHeight="25.0" prefWidth="222.0" />
+                        <TextField fx:id="inputMoneda_txtfield" layoutX="16.0" layoutY="112.0" prefHeight="160.0" prefWidth="224.0" />
+                        <ChoiceBox fx:id="monedaDestino_choicebx" layoutX="368.0" layoutY="61.0" prefHeight="25.0" prefWidth="216.0" />
+                        <TextField fx:id="outputMoneda_txtfield" layoutX="370.0" layoutY="112.0" prefHeight="160.0" prefWidth="213.0" />
                         <Label layoutX="268.0" layoutY="159.0" prefHeight="67.0" prefWidth="65.0">
                            <graphic>
-                              <ImageView fitHeight="67.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="intercambiarMoneda_img" fitHeight="67.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../images/arrows.png" />
                                  </image>
@@ -62,7 +61,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-            <Tab text="Conversor de Temperaturas">
+            <Tab fx:id="convTemp_tab" text="Conversor de Temperaturas">
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -71,7 +70,10 @@
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <TextArea layoutX="243.0" layoutY="38.0" prefHeight="37.0" prefWidth="114.0" />
+                        <TextArea layoutX="243.0" layoutY="38.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="37.0" prefWidth="114.0" promptText="120">
+                           <font>
+                              <Font size="13.0" />
+                           </font></TextArea>
                         <RadioButton layoutX="70.0" layoutY="103.0" mnemonicParsing="false" text="Grados Celsius" />
                         <RadioButton layoutX="241.0" layoutY="103.0" mnemonicParsing="false" text="Grados Fahrenheit" />
                         <RadioButton layoutX="431.0" layoutY="103.0" mnemonicParsing="false" text="Kelvin" />
