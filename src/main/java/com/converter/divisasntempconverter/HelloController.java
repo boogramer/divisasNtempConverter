@@ -1,5 +1,6 @@
 package com.converter.divisasntempconverter;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -39,15 +40,25 @@ public class HelloController implements Initializable {
 
     @FXML
     private TextField outputMoneda_txtfield;
+    @FXML
+    private Button intercambiarMoneda_button;
 
     private final String[] moneda = {"PEN S/. - Nuevo Sol Peruano", "USD $ - Dólar Estadounidense", "EUR € - Euro", "JYP ¥ - Yen Japonés", "KRW ₩ - Won Surcoreano", "GBP £ - Libra Esterlina"};
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         monedaOr_choicebx.getItems().addAll(moneda);
         monedaOr_choicebx.setValue("PEN S/. - Nuevo Sol Peruano");
         monedaDestino_choicebx.getItems().addAll(moneda);
         monedaDestino_choicebx.setValue("USD $ - Dólar Estadounidense");
 
+        intercambiarMoneda_button.setOnAction(this::intercambiarDivisas);
+
+    }
+    public void intercambiarDivisas(ActionEvent event){
+        String monedaDes = monedaDestino_choicebx.getValue();
+        String monedaOr = monedaOr_choicebx.getValue();
+        monedaOr_choicebx.setValue(monedaDes);
+        monedaDestino_choicebx.setValue(monedaOr);
     }
 }
