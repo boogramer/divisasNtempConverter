@@ -10,7 +10,7 @@ import javafx.scene.layout.StackPane;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HelloController implements Initializable {
+public class ConverterController implements Initializable {
     @FXML
     private Tab bienvenido_tab;
 
@@ -42,9 +42,10 @@ public class HelloController implements Initializable {
     private TextField outputMoneda_txtfield;
     @FXML
     private Button intercambiarMoneda_button;
+    @FXML
+    private Button convertir_button;
 
     private final String[] moneda = {"PEN S/. - Nuevo Sol Peruano", "USD $ - Dólar Estadounidense", "EUR € - Euro", "JYP ¥ - Yen Japonés", "KRW ₩ - Won Surcoreano", "GBP £ - Libra Esterlina"};
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         monedaOr_choicebx.getItems().addAll(moneda);
@@ -53,6 +54,7 @@ public class HelloController implements Initializable {
         monedaDestino_choicebx.setValue("USD $ - Dólar Estadounidense");
 
         intercambiarMoneda_button.setOnAction(this::intercambiarDivisas);
+        convertir_button.setOnAction(this::convertirDivisas);
 
     }
     public void intercambiarDivisas(ActionEvent event){
@@ -60,5 +62,12 @@ public class HelloController implements Initializable {
         String monedaOr = monedaOr_choicebx.getValue();
         monedaOr_choicebx.setValue(monedaDes);
         monedaDestino_choicebx.setValue(monedaOr);
+    }
+    public void convertirDivisas(ActionEvent event) {
+        String monedaDes = monedaDestino_choicebx.getValue();
+        String monedaOr = monedaOr_choicebx.getValue();
+
+        /*switch () {
+        }*/
     }
 }

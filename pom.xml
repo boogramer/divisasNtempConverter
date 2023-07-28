@@ -71,7 +71,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.converter.divisasntempconverter/com.converter.divisasntempconverter.HelloApplication
+                                com.converter.divisasntempconverter/com.converter.divisasntempconverter.ConverterApplication
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
