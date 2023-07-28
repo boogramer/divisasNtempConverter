@@ -48,6 +48,7 @@ public class ConverterController implements Initializable {
     private final String[] moneda = {"PEN S/. - Nuevo Sol Peruano", "USD $ - Dólar Estadounidense", "EUR € - Euro", "JYP ¥ - Yen Japonés", "KRW ₩ - Won Surcoreano", "GBP £ - Libra Esterlina"};
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        //meter todo esto en una clase o metodo
         monedaOr_choicebx.getItems().addAll(moneda);
         monedaOr_choicebx.setValue("PEN S/. - Nuevo Sol Peruano");
         monedaDestino_choicebx.getItems().addAll(moneda);
