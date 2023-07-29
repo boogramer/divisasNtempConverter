@@ -3,7 +3,10 @@ module com.converter.divisasntempconverter {
     requires javafx.fxml;
 
     requires com.dlsc.formsfx;
+    requires org.json;
 
     opens com.converter.divisasntempconverter to javafx.fxml;
     exports com.converter.divisasntempconverter;
+    exports com.converter.divisasntempconverter.controller;
+    opens com.converter.divisasntempconverter.controller to javafx.fxml;
 }

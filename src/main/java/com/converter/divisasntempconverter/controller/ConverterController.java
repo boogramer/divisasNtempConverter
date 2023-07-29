@@ -1,4 +1,4 @@
-package com.converter.divisasntempconverter;
+package com.converter.divisasntempconverter.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

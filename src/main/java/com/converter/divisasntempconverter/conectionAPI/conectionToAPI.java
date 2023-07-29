@@ -66,7 +66,7 @@ public class conectionToAPI {
         BufferedReader br = new BufferedReader(new InputStreamReader(http.getInputStream()));
         String inputLine;
         StringBuilder sb = new StringBuilder();
-        while((inputLine=br.readLine())!=null){
+        while((inputLine = br.readLine())!=null){
             sb.append(inputLine);
         }
         return sb;
