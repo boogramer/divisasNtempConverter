@@ -42,8 +42,8 @@ public class conectionToAPI {
     /**
      * Metodo usado para enviar los simbolos de la moneda
      * @return sb -> 'stringbuilder'
-     * @throws MalformedURLException
-     * @throws IOException
+     * @throws MalformedURLException se lanza la excepcion cuando se obtiene una URL mal formada
+     * @throws IOException excepción comprobada que se lanza cuando ocurre un error de entrada/salida durante la ejecución de la app.
      */
     public StringBuilder getSymbolsWithSignification() throws MalformedURLException
             , IOException{

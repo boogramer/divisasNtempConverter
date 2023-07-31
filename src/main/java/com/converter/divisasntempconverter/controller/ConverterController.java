@@ -54,17 +54,17 @@ public class ConverterController implements Initializable {
         monedaDestino_choicebx.getItems().addAll(moneda);
         monedaDestino_choicebx.setValue("USD $ - Dólar Estadounidense");
 
-        intercambiarMoneda_button.setOnAction(this::intercambiarDivisas);
-        convertir_button.setOnAction(this::convertirDivisas);
+        intercambiarMoneda_button.setOnAction(this::swapCurrency);
+        convertir_button.setOnAction(this::exchangeCurrency);
 
     }
-    public void intercambiarDivisas(ActionEvent event){
+    public void swapCurrency(ActionEvent event){
         String monedaDes = monedaDestino_choicebx.getValue();
         String monedaOr = monedaOr_choicebx.getValue();
         monedaOr_choicebx.setValue(monedaDes);
         monedaDestino_choicebx.setValue(monedaOr);
     }
-    public void convertirDivisas(ActionEvent event) {
+    public void exchangeCurrency(ActionEvent event) {
         String monedaDes = monedaDestino_choicebx.getValue();
         String monedaOr = monedaOr_choicebx.getValue();
 
