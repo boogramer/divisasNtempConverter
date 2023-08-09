@@ -7,7 +7,9 @@ import com.converter.divisasntempconverter.models.Currency;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConverterImp implements Converter {
     private ConectionToAPI contectiontoApi;
@@ -49,7 +51,7 @@ public class ConverterImp implements Converter {
      * @throws MalformedURLException
      * @throws IOException
      */
-     @Override
+    @Override
     public List<Currency> getAllCurrencies() throws MalformedURLException, IOException {
         List<Currency> listCurrencies = new ArrayList();
         StringBuilder sb = contectiontoApi.getSymbolsWithSignification();
@@ -65,12 +67,16 @@ public class ConverterImp implements Converter {
     }
 
     /**
-     * @param list
+     * Este metodo extrae todos los simbolos de las monedas y los retorna de manera alfabeticamente
+     * @param list lista de todos los objetos
      * @return
      */
     @Override
     public List<String> getAllSymbols(List<Currency> list) {
-        return null;
+            List<String> listSymbols = list.stream().map(currency -> currency.getSymbol())
+                .collect(Collectors.toList());
+        Collections.sort(listSymbols);
+        return listSymbols;
     }
 
 }
