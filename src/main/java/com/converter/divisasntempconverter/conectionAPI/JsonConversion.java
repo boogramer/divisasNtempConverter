@@ -6,12 +6,13 @@ import org.json.JSONObject;
  */
 public class JsonConversion {
     /**
-     * Lo que realiza este metodo es tomar como parametro un ob String para covertirlo en JSON luego accediendo al valor de la clave 'result' en el JS0N para despues devolverlo como Double
+     * Lo que realiza este metodo es tomar la repuesta de la API en formato JSON y la convierte en Double, tomando
+     *  como clave 'result', en el JS0N para despues devolverlo como Double
      * @param stringBuilder parametro que contiene la respuesta en JSON
-     * @return valor de la moneda convertida
+     * @return valor de la moneda convertida en Double
      */
     public Double getDataConversion(StringBuilder stringBuilder){
-        JSONObject myResponse=new JSONObject(stringBuilder.toString());
+        JSONObject myResponse = new JSONObject(stringBuilder.toString());
         return myResponse.getDouble("result");
     }
 

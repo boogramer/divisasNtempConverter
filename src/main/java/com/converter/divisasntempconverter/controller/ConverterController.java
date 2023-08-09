@@ -58,12 +58,22 @@ public class ConverterController implements Initializable {
         convertir_button.setOnAction(this::exchangeCurrency);
 
     }
+
+    /**
+     * Este metodo nos permitira intercambiar los simbolos de las mendas para que la conversion se reversible
+     * @param event
+     */
     public void swapCurrency(ActionEvent event){
         String monedaDes = monedaDestino_choicebx.getValue();
         String monedaOr = monedaOr_choicebx.getValue();
         monedaOr_choicebx.setValue(monedaDes);
         monedaDestino_choicebx.setValue(monedaOr);
     }
+
+    /**
+     * Este metodo nos permitira ejecutar la coonversion
+     * @param event
+     */
     public void exchangeCurrency(ActionEvent event) {
         String monedaDes = monedaDestino_choicebx.getValue();
         String monedaOr = monedaOr_choicebx.getValue();
