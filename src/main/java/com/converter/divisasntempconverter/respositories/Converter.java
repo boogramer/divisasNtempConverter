@@ -1,6 +1,7 @@
 package com.converter.divisasntempconverter.respositories;
 
 import com.converter.divisasntempconverter.models.Currency;
+import com.converter.divisasntempconverter.models.HistoricalCurrency;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -16,6 +17,6 @@ public interface Converter {
     List<Currency> getAllCurrencies() throws MalformedURLException,IOException;
     List<String> getAllSymbols(List<Currency> list);
     // pedente de si se implementara un historial de todos lo valores de las monedas
-    /*List<HistoricalCurrency> getHistoricalVlues(String base,Integer durationDays,String symbol)
-            throws MalformedURLException,IOException;*/
+    List<HistoricalCurrency> getHistoricalVlues(String base, Integer durationDays, String symbol)
+            throws MalformedURLException,IOException;
 }

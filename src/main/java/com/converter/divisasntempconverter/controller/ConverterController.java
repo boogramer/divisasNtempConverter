@@ -2,8 +2,10 @@ package com.converter.divisasntempconverter.controller;
 
 import com.converter.divisasntempconverter.conectionAPI.ConectionToAPI;
 import com.converter.divisasntempconverter.conectionAPI.JsonConversion;
+import com.converter.divisasntempconverter.models.Currency;
 import com.converter.divisasntempconverter.respositories.Converter;
 import com.converter.divisasntempconverter.respositories.ConverterImp;
+import com.converter.divisasntempconverter.services.CurrencyService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class ConverterController implements Initializable {
@@ -70,7 +73,12 @@ public class ConverterController implements Initializable {
             ConectionToAPI contectiontoApi = new ConectionToAPI(url, apiKey);
             JsonConversion jsonConversion = new JsonConversion();
             Converter converter = new ConverterImp(contectiontoApi, jsonConversion);
-            currencyService=new CurrencyService(converter);
+            currencyService = new CurrencyService(converter);
+            List<Currency> listCurrency;
+            /*private final Integer DAYS = 8;
+            private final String BASE = "EUR";*/ // esto se usara para el historico
+
+
 
         } catch (IOException ex) {
             Logger.getLogger(DashboardController.class.getName()).log(Level.SEVERE, null, ex);
