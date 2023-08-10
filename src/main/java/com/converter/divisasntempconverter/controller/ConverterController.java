@@ -57,17 +57,18 @@ public class ConverterController implements Initializable {
     private Button convertir_button;
     CurrencyService currencyService;
     List<Currency> listCurrency;
-    private final String[] moneda = {"PEN S/. - Nuevo Sol Peruano", "USD $ - Dólar Estadounidense", "EUR € - Euro", "JYP ¥ - Yen Japonés", "KRW ₩ - Won Surcoreano", "GBP £ - Libra Esterlina"};
+    //private final String[] moneda = {"PEN S/. - Nuevo Sol Peruano", "USD $ - Dólar Estadounidense", "EUR € - Euro", "JYP ¥ - Yen Japonés", "KRW ₩ - Won Surcoreano", "GBP £ - Libra Esterlina"};
 
     @Override
     public void initialize(URL uri, ResourceBundle resourceBundle) {
         //meter todo esto en una clase o metodo
-        monedaOr_choicebx.getItems().addAll(moneda);
-        monedaOr_choicebx.setValue("PEN S/. - Nuevo Sol Peruano");
-        monedaDestino_choicebx.getItems().addAll(moneda);
-        monedaDestino_choicebx.setValue("USD $ - Dólar Estadounidense");
+        //monedaOr_choicebx.getItems().addAll(moneda);
+        //monedaOr_choicebx.setValue("PEN S/. - Nuevo Sol Peruano");
+        //monedaDestino_choicebx.getItems().addAll(moneda);
+        //monedaDestino_choicebx.setValue("USD $ - Dólar Estadounidense");
 
         intercambiarMoneda_button.setOnAction(this::swapCurrency);
+        //exchangeSymbol();
 
         // implemetnacon de la API
         try {
@@ -88,8 +89,10 @@ public class ConverterController implements Initializable {
 
 
     }
+
     /**
      * Este metodo nos permitira intercambiar los simbolos de las mendas para que la conversion se reversible
+     *
      * @param event
      */
     public void swapCurrency(ActionEvent event) {
@@ -102,7 +105,7 @@ public class ConverterController implements Initializable {
     /**
      * Este metodo nos permitira ejecutar la coonversion
      */
-    public void exchangeCurrency(ActionEvent event) throws IOException{
+    public void exchangeCurrency(ActionEvent event) throws IOException {
         try {
             String from = monedaOr_choicebx.getSelectionModel().getSelectedItem().toString();
             String to = monedaDestino_choicebx.getSelectionModel().getSelectedItem().toString();
@@ -121,5 +124,29 @@ public class ConverterController implements Initializable {
         alert.setTitle("Dato inválido");
         alert.setContentText("Por favor rellene todos los campos");
         alert.showAndWait();
+    }
+
+    public void exchangeSymbol() {
+        String stringMoneda = monedaOr_choicebx.getValue();
+        String stringMonedaDes = monedaDestino_choicebx.getValue();
+
+        switch (stringMoneda) {
+            case "PEN S/. - Nuevo Sol Peruano" -> monedaOr_choicebx.setValue("PEN");
+            case "USD $ - Dólar Estadounidense" -> monedaOr_choicebx.setValue("USD");
+            case "EUR € - Euro" -> monedaOr_choicebx.setValue("EUR");
+            case "JYP ¥ - Yen Japonés" -> monedaOr_choicebx.setValue("JYP");
+            case "KRW ₩ - Won Surcoreano" -> monedaOr_choicebx.setValue("KRW");
+            case "GBP £ - Libra Esterlina" -> monedaOr_choicebx.setValue("GBP");
+            default -> throw new IllegalStateException("Unexpected value: " + stringMoneda);
+        }
+        switch (stringMonedaDes) {
+            case "PEN S/. - Nuevo Sol Peruano" -> monedaDestino_choicebx.setValue("PEN");
+            case "USD $ - Dólar Estadounidense" -> monedaDestino_choicebx.setValue("USD");
+            case "EUR € - Euro" -> monedaDestino_choicebx.setValue("EUR");
+            case "JYP ¥ - Yen Japonés" -> monedaDestino_choicebx.setValue("JYP");
+            case "KRW ₩ - Won Surcoreano" -> monedaDestino_choicebx.setValue("KRW");
+            case "GBP £ - Libra Esterlina" -> monedaDestino_choicebx.setValue("GBP");
+            default -> throw new IllegalStateException("Unexpected value: " + stringMoneda);
+        }
     }
 }

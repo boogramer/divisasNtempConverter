@@ -10,16 +10,12 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-
 public class ConverterImp implements Converter {
-        private ConectionToAPI contectiontoApi;
+    private ConectionToAPI contectiontoApi;
     private JsonConversion jsonConversion;
 
     /**
      * contructor definido por las anteriores variables convocadas
-     *
-     * @param contectiontoApi para traer los metodos de su clase
-     * @param jsonConversion  para traer los metodos de su clase
      */
     public ConverterImp(ConectionToAPI contectiontoApi, JsonConversion jsonConversion) {
         this.contectiontoApi = contectiontoApi;
@@ -30,7 +26,6 @@ public class ConverterImp implements Converter {
      * Este metodo convertira la moneda y retornara un valor de tipo Double
      * Usara los metodos 'getRate' para conectarse ala API y obtener la respuesta en JSON, luego se usara
      * el metodo 'getDataConversion' para hacer la conversion de JSON a Double
-     *
      * @param from  simbolo moneda origen
      * @param to    simbolo moneda destino
      * @param value valor que se desea convertir
@@ -78,5 +73,4 @@ public class ConverterImp implements Converter {
         Collections.sort(listSymbols);
         return listSymbols;
     }
-
 }

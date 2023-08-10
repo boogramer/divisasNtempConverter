@@ -15,12 +15,10 @@ public class ConectionToAPI {
     private final String url;
     private final String apiKey;
 
-    // contructor
     public ConectionToAPI(String url, String apiKey) {
         this.url = url;
         this.apiKey = apiKey;
     }
-    // se usara StringBuilder para modificar la cadena de texto
 
     /**
      * Se usara este metodo para enviar los parametros al 'REST' services para la conversion de la moneda
@@ -34,7 +32,7 @@ public class ConectionToAPI {
      */
     public StringBuilder getRate(String monOrigen, String monDestino, Double monto)
             throws MalformedURLException, IOException {
-        URL objUrl = new URL(url + "/convert?to=" + monOrigen + "&from=" + monDestino + "&amount=" + monto);
+        URL objUrl = new URL(url + "/convert?to=" + monDestino + "&from=" + monOrigen + "&amount=" + monto);
         HttpURLConnection http = (HttpURLConnection) objUrl.openConnection();
         http.setRequestProperty("apikey", apiKey);
         StringBuilder sb = getStringbuilder(http);
@@ -42,9 +40,8 @@ public class ConectionToAPI {
     }
 
     /**
-     * Metodo usado para concectarse con la API y obtener informacion de los simbolos de las monedas y lo que significa
-     * cada uno
-     * @return respuesta de la API
+     * Metodo usado para concectarse con la API y obtener informacion de los simbolos de las monedas y lo que significa cada una
+     * @return respuesta de la solicitud
      * @throws MalformedURLException se lanza la excepcion cuando se obtiene una URL mal formada
      * @throws IOException           excepción comprobada que se lanza cuando ocurre un error de entrada/salida durante la ejecución de la app.
      */
@@ -57,17 +54,6 @@ public class ConectionToAPI {
         return sb;
     }
 
-
-/*    public StringBuilder getHistoricalCurrency(String base,LocalDate stratDate
-            ,LocalDate endDate,String symbol) throws MalformedURLException, IOException{
-        URL objUrl=new URL(url+"/timeseries?start_date="+stratDate+"&end_date="
-                +endDate+"&base="+base+"&symbols="+symbol);
-        HttpURLConnection http=(HttpURLConnection) objUrl.openConnection();
-        http.setRequestProperty("apikey", apiKey);
-        StringBuilder sb=getStringbuilder(http);
-        return sb;
-        }*/
-
     /**
      * Metodo corrobora si la conexion es correcta con el codigo de respuesta con 'getResponseCode()'
      * para luego leer cada respuesta del servidor  con 'while'
@@ -77,8 +63,8 @@ public class ConectionToAPI {
      */
     private StringBuilder getStringbuilder(HttpURLConnection http) throws IOException {
         if (http.getResponseCode() != 200) // codigo 200 indica que la conexion se hizo de manera correcta
-            throw new IllegalStateException("La conexion no se ha sido exitosa" + http.getResponseCode());
-        BufferedReader br = new BufferedReader(new InputStreamReader(http.getInputStream()));
+            throw new IllegalStateException("La conexion no ha sido exitosa" + http.getResponseCode());
+        BufferedReader br = new BufferedReader(new InputStreamReader(http.getInputStream())); //para leer la respuesta de la solicitud
         String inputLine;
         StringBuilder sb = new StringBuilder();
         while ((inputLine = br.readLine()) != null) {
