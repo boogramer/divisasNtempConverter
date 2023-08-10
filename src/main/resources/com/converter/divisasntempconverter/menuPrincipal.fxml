@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="mainDashboard_Sp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.converter.divisasntempconverter.controller.ConverterController">
+<StackPane fx:id="mainDashboard_Sp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.converter.divisasntempconverter.controller.ConverterController">
    <children>
       <TabPane fx:id="dashboard_tp" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -47,7 +47,7 @@
                         <TextField fx:id="inputMoneda_txtfield" layoutX="16.0" layoutY="112.0" prefHeight="160.0" prefWidth="224.0" />
                         <ChoiceBox fx:id="monedaDestino_choicebx" layoutX="368.0" layoutY="61.0" prefHeight="25.0" prefWidth="216.0" />
                         <TextField fx:id="outputMoneda_txtfield" layoutX="370.0" layoutY="112.0" prefHeight="160.0" prefWidth="213.0" />
-                        <Button fx:id="convertir_button" layoutX="242.0" layoutY="290.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="119.0" text="CONVERTIR">
+                        <Button fx:id="convertir_button" layoutX="242.0" layoutY="290.0" mnemonicParsing="false" onAction="#exchangeCurrency" prefHeight="40.0" prefWidth="119.0" text="CONVERTIR">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>

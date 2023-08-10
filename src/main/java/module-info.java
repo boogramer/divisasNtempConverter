@@ -4,6 +4,7 @@ module com.converter.divisasntempconverter {
 
     requires com.dlsc.formsfx;
     requires org.json;
+    requires java.logging;
 
     opens com.converter.divisasntempconverter to javafx.fxml;
     exports com.converter.divisasntempconverter;
