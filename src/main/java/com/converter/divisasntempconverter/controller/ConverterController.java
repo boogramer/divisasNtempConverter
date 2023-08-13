@@ -88,12 +88,14 @@ public class ConverterController implements Initializable {
             List<String> listSymbols = currencyService.getAllSymbols(listCurrency);
             List<String> listSignification = currencyService.getSignification(listCurrency);
 
-            monedaOrigen_comboBox.getItems().addAll(listSymbols);
+            //monedaOrigen_comboBox.getItems().addAll(listSymbols);
+            listSymbolNsignification(listCurrency, monedaOrigen_comboBox);
             monedaOrigen_comboBox.setVisibleRowCount(5);
             monedaOrigen_comboBox.setEditable(false);
 
 
-            monedaDestino_comboBox.getItems().addAll(listSymbols);
+            //monedaDestino_comboBox.getItems().addAll(listSymbols);
+            listSymbolNsignification(listCurrency, monedaDestino_comboBox);
             monedaDestino_comboBox.setVisibleRowCount(5);
             monedaDestino_comboBox.setEditable(false);
         } catch (IOException ex) {
@@ -120,8 +122,8 @@ public class ConverterController implements Initializable {
      */
     public void exchangeCurrency(ActionEvent event) throws IOException {
         try {
-            String from = monedaOrigen_comboBox.getSelectionModel().getSelectedItem().toString();
-            String to = monedaDestino_comboBox.getSelectionModel().getSelectedItem().toString();
+            String from = monedaOrigen_comboBox.getSelectionModel().getSelectedItem().toString().substring(0,3);
+            String to = monedaDestino_comboBox.getSelectionModel().getSelectedItem().toString().substring(0,3);
             Double amount = Double.parseDouble(inputMoneda_txtfield.getText());
             Double result = currencyService.convert(from, to, amount);
             outputMoneda_txtfield.setText(result + " " + to);
@@ -138,10 +140,13 @@ public class ConverterController implements Initializable {
         alert.setContentText("Por favor rellene todos los campos");
         alert.showAndWait();
     }
-    private void listSymbolNsignification(List<Currency> listCurrency) {
-        col1Symbols.setCellValueFactory(new PropertyValueFactory<>("symbol"));
-        col2Signification.setCellValueFactory(new PropertyValueFactory<>("signification"));
-        ObservableList<Currency> ob=FXCollections.observableArrayList(listCurrency);
-        tableView.setItems(ob);
+
+    private void listSymbolNsignification(List<Currency> listCurrency,ComboBox<String> moneda) {
+        List<String> listSymbols = currencyService.getAllSymbols(listCurrency);
+        List<String> listSignification = currencyService.getSignification(listCurrency);
+        for (int i = 0; i < listSymbols.size(); i++) {
+            String listaCompleta = listSymbols.get(i) + " - " + listSignification.get(i);
+            moneda.getItems().add(listaCompleta);
+        }
     }
 }

@@ -25,12 +25,12 @@ public class CurrencyService {
         return converter.getAllCurrencies();
     }
 
-    public List<Currency> findCurrency(List<Currency> list, String symbol) {
+    /*public List<Currency> findCurrency(List<Currency> list, String symbol) {
         String symbol2 = toUpperCase(symbol);
         return list.stream().filter(currency -> currency.getSymbol()
                         .contains(symbol2))
                 .collect(Collectors.toList());
-    }
+    }*/
 
     public List<String> getAllSymbols(List<Currency> list) {
         return converter.getAllSymbols(list);
