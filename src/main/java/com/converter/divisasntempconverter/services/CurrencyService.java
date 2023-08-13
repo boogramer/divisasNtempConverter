@@ -35,6 +35,9 @@ public class CurrencyService {
     public List<String> getAllSymbols(List<Currency> list) {
         return converter.getAllSymbols(list);
     }
+    public List<String> getSignification(List<Currency> list) {
+        return converter.getSignification(list);
+    }
 
     private String toUpperCase(String str) {
         String st = "";

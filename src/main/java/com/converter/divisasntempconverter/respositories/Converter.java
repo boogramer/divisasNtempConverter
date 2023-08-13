@@ -12,4 +12,6 @@ public interface Converter {
     List<Currency> getAllCurrencies() throws MalformedURLException, IOException;
 
     List<String> getAllSymbols(List<Currency> list);
+
+    List<String> getSignification(List<Currency> list);
 }

@@ -6,6 +6,8 @@ import com.converter.divisasntempconverter.models.Currency;
 import com.converter.divisasntempconverter.respositories.Converter;
 import com.converter.divisasntempconverter.respositories.ConverterImp;
 import com.converter.divisasntempconverter.services.CurrencyService;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +15,8 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
@@ -82,11 +86,8 @@ public class ConverterController implements Initializable {
 
             listCurrency = currencyService.getAllCurrencies();
             List<String> listSymbols = currencyService.getAllSymbols(listCurrency);
+            List<String> listSignification = currencyService.getSignification(listCurrency);
 
-            String textoMoneda = "Todas son monedas";
-            for (int i = 0; i < listSymbols.size(); i++) {
-                listSymbols.set(i, listSymbols.get(i) + textoMoneda);
-            }
             monedaOrigen_comboBox.getItems().addAll(listSymbols);
             monedaOrigen_comboBox.setVisibleRowCount(5);
             monedaOrigen_comboBox.setEditable(false);
@@ -137,28 +138,10 @@ public class ConverterController implements Initializable {
         alert.setContentText("Por favor rellene todos los campos");
         alert.showAndWait();
     }
-
-    public void exchangeSymbol() {
-        String stringMoneda = monedaOrigen_comboBox.getValue();
-        String stringMonedaDes = monedaDestino_comboBox.getValue();
-
-        switch (stringMoneda) {
-            case "PEN S/. - Nuevo Sol Peruano" -> monedaOrigen_comboBox.setValue("PEN");
-            case "USD $ - Dólar Estadounidense" -> monedaOrigen_comboBox.setValue("USD");
-            case "EUR € - Euro" -> monedaOrigen_comboBox.setValue("EUR");
-            case "JYP ¥ - Yen Japonés" -> monedaOrigen_comboBox.setValue("JYP");
-            case "KRW ₩ - Won Surcoreano" -> monedaOrigen_comboBox.setValue("KRW");
-            case "GBP £ - Libra Esterlina" -> monedaOrigen_comboBox.setValue("GBP");
-            default -> throw new IllegalStateException("Unexpected value: " + stringMoneda);
-        }
-        switch (stringMonedaDes) {
-            case "PEN S/. - Nuevo Sol Peruano" -> monedaDestino_comboBox.setValue("PEN");
-            case "USD $ - Dólar Estadounidense" -> monedaDestino_comboBox.setValue("USD");
-            case "EUR € - Euro" -> monedaDestino_comboBox.setValue("EUR");
-            case "JYP ¥ - Yen Japonés" -> monedaDestino_comboBox.setValue("JYP");
-            case "KRW ₩ - Won Surcoreano" -> monedaDestino_comboBox.setValue("KRW");
-            case "GBP £ - Libra Esterlina" -> monedaDestino_comboBox.setValue("GBP");
-            default -> throw new IllegalStateException("Unexpected value: " + stringMoneda);
-        }
+    private void listSymbolNsignification(List<Currency> listCurrency) {
+        col1Symbols.setCellValueFactory(new PropertyValueFactory<>("symbol"));
+        col2Signification.setCellValueFactory(new PropertyValueFactory<>("signification"));
+        ObservableList<Currency> ob=FXCollections.observableArrayList(listCurrency);
+        tableView.setItems(ob);
     }
 }
