@@ -15,15 +15,12 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.*;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 public class ConverterController implements Initializable {
@@ -88,13 +85,10 @@ public class ConverterController implements Initializable {
             List<String> listSymbols = currencyService.getAllSymbols(listCurrency);
             List<String> listSignification = currencyService.getSignification(listCurrency);
 
-            //monedaOrigen_comboBox.getItems().addAll(listSymbols);
             listSymbolNsignification(listCurrency, monedaOrigen_comboBox);
             monedaOrigen_comboBox.setVisibleRowCount(5);
             monedaOrigen_comboBox.setEditable(false);
 
-
-            //monedaDestino_comboBox.getItems().addAll(listSymbols);
             listSymbolNsignification(listCurrency, monedaDestino_comboBox);
             monedaDestino_comboBox.setVisibleRowCount(5);
             monedaDestino_comboBox.setEditable(false);
@@ -140,13 +134,36 @@ public class ConverterController implements Initializable {
         alert.setContentText("Por favor rellene todos los campos");
         alert.showAndWait();
     }
+    class Pair {
+        String value1;
+        String value2;
+
+        public Pair(String value1, String value2) {
+            this.value1 = value1;
+            this.value2 = value2;
+        }
+    }
 
     private void listSymbolNsignification(List<Currency> listCurrency,ComboBox<String> moneda) {
         List<String> listSymbols = currencyService.getAllSymbols(listCurrency);
         List<String> listSignification = currencyService.getSignification(listCurrency);
+        
+        List<Pair> combinedList = new ArrayList<>();
         for (int i = 0; i < listSymbols.size(); i++) {
-            String listaCompleta = listSymbols.get(i) + " - " + listSignification.get(i);
-            moneda.getItems().add(listaCompleta);
+            combinedList.add(new Pair(listSymbols.get(i), listSignification.get(i)));
+        }
+
+        Collections.sort(combinedList, Comparator.comparing(pair -> pair.value1));
+
+        List<String> sortedlistSymbols = new ArrayList<>();
+        List<String> sortedlistSignification = new ArrayList<>();
+        for (Pair pair : combinedList) {
+            sortedlistSymbols.add(pair.value1);
+            sortedlistSignification.add(pair.value2);
+        }
+        for (int i = 0; i < sortedlistSymbols.size(); i++) {
+            String listaOr = sortedlistSymbols.get(i) + " - " + sortedlistSignification.get(i);
+            moneda.getItems().add(listaOr);
         }
     }
 }

@@ -70,7 +70,6 @@ public class ConverterImp implements Converter {
     public List<String> getAllSymbols(List<Currency> list) {
             List<String> listSymbols = list.stream().map(currency -> currency.getSymbol())
                 .collect(Collectors.toList());
-        //Collections.sort(listSymbols);
         return listSymbols;
     }
 
@@ -78,7 +77,6 @@ public class ConverterImp implements Converter {
     public List<String> getSignification(List<Currency> list) {
         List<String> listSignification = list.stream().map(currency -> currency.getSignification())
                 .collect(Collectors.toList());
-        //Collections.sort(listSignification);
         return listSignification;
     }
 }
