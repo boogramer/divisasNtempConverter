@@ -3,7 +3,7 @@
 <?import java.net.URL?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
@@ -43,9 +43,8 @@
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <ChoiceBox fx:id="monedaOr_choicebx" layoutX="16.0" layoutY="61.0" prefHeight="25.0" prefWidth="222.0" />
                         <TextField fx:id="inputMoneda_txtfield" layoutX="16.0" layoutY="112.0" prefHeight="160.0" prefWidth="224.0" />
-                        <ChoiceBox fx:id="monedaDestino_choicebx" layoutX="368.0" layoutY="61.0" prefHeight="25.0" prefWidth="216.0" />
+                        <ComboBox fx:id="monedaOrigen_comboBox" layoutX="17.0" layoutY="61.0" prefHeight="5.0" prefWidth="222.0" />
                         <TextField fx:id="outputMoneda_txtfield" layoutX="370.0" layoutY="112.0" prefHeight="160.0" prefWidth="213.0" />
                         <Button fx:id="convertir_button" layoutX="242.0" layoutY="290.0" mnemonicParsing="false" onAction="#exchangeCurrency" prefHeight="40.0" prefWidth="119.0" text="CONVERTIR">
                            <font>
@@ -67,6 +66,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
+                        <ComboBox fx:id="monedaDestino_comboBox" layoutX="366.0" layoutY="61.0" prefHeight="5.0" prefWidth="222.0" />
                      </children>
                   </AnchorPane>
             </content>

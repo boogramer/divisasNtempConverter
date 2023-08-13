@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ConverterController implements Initializable {
     @FXML
@@ -44,10 +45,10 @@ public class ConverterController implements Initializable {
     private StackPane mainDashboard_Sp;
 
     @FXML
-    private ChoiceBox<String> monedaDestino_choicebx;
+    private ComboBox<String> monedaOrigen_comboBox;
 
     @FXML
-    private ChoiceBox<String> monedaOr_choicebx;
+    private ComboBox<String> monedaDestino_comboBox;
 
     @FXML
     private TextField outputMoneda_txtfield;
@@ -62,10 +63,10 @@ public class ConverterController implements Initializable {
     @Override
     public void initialize(URL uri, ResourceBundle resourceBundle) {
         //meter todo esto en una clase o metodo
-        //monedaOr_choicebx.getItems().addAll(moneda);
-        //monedaOr_choicebx.setValue("PEN S/. - Nuevo Sol Peruano");
-        //monedaDestino_choicebx.getItems().addAll(moneda);
-        //monedaDestino_choicebx.setValue("USD $ - Dólar Estadounidense");
+        //monedaOrigen_comboBox.getItems().addAll(moneda);
+        //monedaOrigen_comboBox.setValue("PEN S/. - Nuevo Sol Peruano");
+        //monedaDestino_comboBox.getItems().addAll(moneda);
+        //monedaDestino_comboBox.setValue("USD $ - Dólar Estadounidense");
 
         intercambiarMoneda_button.setOnAction(this::swapCurrency);
         //exchangeSymbol();
@@ -81,8 +82,19 @@ public class ConverterController implements Initializable {
 
             listCurrency = currencyService.getAllCurrencies();
             List<String> listSymbols = currencyService.getAllSymbols(listCurrency);
-            monedaOr_choicebx.getItems().addAll(listSymbols);
-            monedaDestino_choicebx.getItems().addAll(listSymbols);
+
+            String textoMoneda = "Todas son monedas";
+            for (int i = 0; i < listSymbols.size(); i++) {
+                listSymbols.set(i, listSymbols.get(i) + textoMoneda);
+            }
+            monedaOrigen_comboBox.getItems().addAll(listSymbols);
+            monedaOrigen_comboBox.setVisibleRowCount(5);
+            monedaOrigen_comboBox.setEditable(false);
+
+
+            monedaDestino_comboBox.getItems().addAll(listSymbols);
+            monedaDestino_comboBox.setVisibleRowCount(5);
+            monedaDestino_comboBox.setEditable(false);
         } catch (IOException ex) {
             Logger.getLogger(ConverterController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -96,10 +108,10 @@ public class ConverterController implements Initializable {
      * @param event
      */
     public void swapCurrency(ActionEvent event) {
-        String monedaDes = monedaDestino_choicebx.getValue();
-        String monedaOr = monedaOr_choicebx.getValue();
-        monedaOr_choicebx.setValue(monedaDes);
-        monedaDestino_choicebx.setValue(monedaOr);
+        String monedaDes = monedaDestino_comboBox.getValue();
+        String monedaOr = monedaOrigen_comboBox.getValue();
+        monedaOrigen_comboBox.setValue(monedaDes);
+        monedaDestino_comboBox.setValue(monedaOr);
     }
 
     /**
@@ -107,8 +119,8 @@ public class ConverterController implements Initializable {
      */
     public void exchangeCurrency(ActionEvent event) throws IOException {
         try {
-            String from = monedaOr_choicebx.getSelectionModel().getSelectedItem().toString();
-            String to = monedaDestino_choicebx.getSelectionModel().getSelectedItem().toString();
+            String from = monedaOrigen_comboBox.getSelectionModel().getSelectedItem().toString();
+            String to = monedaDestino_comboBox.getSelectionModel().getSelectedItem().toString();
             Double amount = Double.parseDouble(inputMoneda_txtfield.getText());
             Double result = currencyService.convert(from, to, amount);
             outputMoneda_txtfield.setText(result + " " + to);
@@ -127,25 +139,25 @@ public class ConverterController implements Initializable {
     }
 
     public void exchangeSymbol() {
-        String stringMoneda = monedaOr_choicebx.getValue();
-        String stringMonedaDes = monedaDestino_choicebx.getValue();
+        String stringMoneda = monedaOrigen_comboBox.getValue();
+        String stringMonedaDes = monedaDestino_comboBox.getValue();
 
         switch (stringMoneda) {
-            case "PEN S/. - Nuevo Sol Peruano" -> monedaOr_choicebx.setValue("PEN");
-            case "USD $ - Dólar Estadounidense" -> monedaOr_choicebx.setValue("USD");
-            case "EUR € - Euro" -> monedaOr_choicebx.setValue("EUR");
-            case "JYP ¥ - Yen Japonés" -> monedaOr_choicebx.setValue("JYP");
-            case "KRW ₩ - Won Surcoreano" -> monedaOr_choicebx.setValue("KRW");
-            case "GBP £ - Libra Esterlina" -> monedaOr_choicebx.setValue("GBP");
+            case "PEN S/. - Nuevo Sol Peruano" -> monedaOrigen_comboBox.setValue("PEN");
+            case "USD $ - Dólar Estadounidense" -> monedaOrigen_comboBox.setValue("USD");
+            case "EUR € - Euro" -> monedaOrigen_comboBox.setValue("EUR");
+            case "JYP ¥ - Yen Japonés" -> monedaOrigen_comboBox.setValue("JYP");
+            case "KRW ₩ - Won Surcoreano" -> monedaOrigen_comboBox.setValue("KRW");
+            case "GBP £ - Libra Esterlina" -> monedaOrigen_comboBox.setValue("GBP");
             default -> throw new IllegalStateException("Unexpected value: " + stringMoneda);
         }
         switch (stringMonedaDes) {
-            case "PEN S/. - Nuevo Sol Peruano" -> monedaDestino_choicebx.setValue("PEN");
-            case "USD $ - Dólar Estadounidense" -> monedaDestino_choicebx.setValue("USD");
-            case "EUR € - Euro" -> monedaDestino_choicebx.setValue("EUR");
-            case "JYP ¥ - Yen Japonés" -> monedaDestino_choicebx.setValue("JYP");
-            case "KRW ₩ - Won Surcoreano" -> monedaDestino_choicebx.setValue("KRW");
-            case "GBP £ - Libra Esterlina" -> monedaDestino_choicebx.setValue("GBP");
+            case "PEN S/. - Nuevo Sol Peruano" -> monedaDestino_comboBox.setValue("PEN");
+            case "USD $ - Dólar Estadounidense" -> monedaDestino_comboBox.setValue("USD");
+            case "EUR € - Euro" -> monedaDestino_comboBox.setValue("EUR");
+            case "JYP ¥ - Yen Japonés" -> monedaDestino_comboBox.setValue("JYP");
+            case "KRW ₩ - Won Surcoreano" -> monedaDestino_comboBox.setValue("KRW");
+            case "GBP £ - Libra Esterlina" -> monedaDestino_comboBox.setValue("GBP");
             default -> throw new IllegalStateException("Unexpected value: " + stringMoneda);
         }
     }
