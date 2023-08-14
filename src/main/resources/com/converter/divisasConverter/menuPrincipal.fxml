@@ -38,15 +38,15 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Text layoutX="146.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione la moneda que desea convertir">
+                        <Text layoutX="11.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Seleccione la moneda que desea convertir o búsquela en &quot;Buscar moneda.....&quot; ">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
                         </Text>
-                        <TextField fx:id="inputMoneda_txtfield" layoutX="16.0" layoutY="112.0" prefHeight="160.0" prefWidth="224.0" />
-                        <ComboBox fx:id="monedaOrigen_comboBox" layoutX="17.0" layoutY="61.0" prefHeight="5.0" prefWidth="222.0" />
-                        <TextField fx:id="outputMoneda_txtfield" layoutX="370.0" layoutY="112.0" prefHeight="160.0" prefWidth="213.0" />
-                        <Button fx:id="convertir_button" layoutX="242.0" layoutY="290.0" mnemonicParsing="false" onAction="#exchangeCurrency" prefHeight="40.0" prefWidth="119.0" text="CONVERTIR">
+                        <TextField fx:id="inputMoneda_txtfield" layoutX="14.0" layoutY="132.0" prefHeight="160.0" prefWidth="224.0" />
+                        <ComboBox fx:id="monedaOrigen_comboBox" layoutX="14.0" layoutY="94.0" prefHeight="5.0" prefWidth="222.0" />
+                        <TextField fx:id="outputMoneda_txtfield" layoutX="362.0" layoutY="132.0" prefHeight="160.0" prefWidth="224.0" />
+                        <Button fx:id="convertir_button" layoutX="242.0" layoutY="305.0" mnemonicParsing="false" onAction="#exchangeCurrency" prefHeight="40.0" prefWidth="119.0" text="CONVERTIR">
                            <font>
                               <Font name="System Bold" size="15.0" />
                            </font>
@@ -54,7 +54,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="intercambiarMoneda_button" layoutX="260.0" layoutY="155.0" mnemonicParsing="false">
+                        <Button fx:id="intercambiarMoneda_button" layoutX="260.0" layoutY="175.0" mnemonicParsing="false">
                            <graphic>
                               <ImageView fx:id="intercambiarMoneda_img" fitHeight="67.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -66,7 +66,9 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <ComboBox fx:id="monedaDestino_comboBox" layoutX="366.0" layoutY="61.0" prefHeight="5.0" prefWidth="222.0" />
+                        <ComboBox fx:id="monedaDestino_comboBox" layoutX="363.0" layoutY="94.0" prefHeight="5.0" prefWidth="222.0" />
+                        <TextField fx:id="filterMonedaOrigen_TextField" layoutX="14.0" layoutY="53.0" prefHeight="25.0" prefWidth="220.0" promptText="Buscar moneda....." />
+                        <TextField fx:id="filterMonedaDestino_TextField" layoutX="364.0" layoutY="53.0" prefHeight="25.0" prefWidth="220.0" promptText="Buscar moneda....." />
                      </children>
                   </AnchorPane>
             </content>

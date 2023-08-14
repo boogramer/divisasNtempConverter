@@ -6,6 +6,8 @@ import com.converter.divisasConverter.models.Currency;
 import com.converter.divisasConverter.respositories.Converter;
 import com.converter.divisasConverter.respositories.ConverterImp;
 import com.converter.divisasConverter.services.CurrencyService;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -54,21 +56,17 @@ public class ConverterController implements Initializable {
     private Button intercambiarMoneda_button;
     @FXML
     private Button convertir_button;
+    @FXML
+    private TextField filterMonedaOrigen_TextField;
+
+    @FXML
+    private TextField filterMonedaDestino_TextField;
     CurrencyService currencyService;
     List<Currency> listCurrency;
-    //private final String[] moneda = {"PEN S/. - Nuevo Sol Peruano", "USD $ - Dólar Estadounidense", "EUR € - Euro", "JYP ¥ - Yen Japonés", "KRW ₩ - Won Surcoreano", "GBP £ - Libra Esterlina"};
 
     @Override
     public void initialize(URL uri, ResourceBundle resourceBundle) {
-        //meter todo esto en una clase o metodo
-        //monedaOrigen_comboBox.getItems().addAll(moneda);
-        //monedaOrigen_comboBox.setValue("PEN S/. - Nuevo Sol Peruano");
-        //monedaDestino_comboBox.getItems().addAll(moneda);
-        //monedaDestino_comboBox.setValue("USD $ - Dólar Estadounidense");
-
-        intercambiarMoneda_button.setOnAction(this::swapCurrency);
-        //exchangeSymbol();
-
+        intercambiarMoneda_button.setOnAction(this::swapCurrency); // para intercambiar los simbolos de las monedas siendo reversible la coversiorn
         // implemetnacon de la API
         try {
             String url = "https://api.apilayer.com/fixer";
@@ -81,6 +79,7 @@ public class ConverterController implements Initializable {
             listCurrency = currencyService.getAllCurrencies();
 
             listSymbolNsignification(listCurrency, monedaOrigen_comboBox);
+            filterMonedas(listCurrency, monedaOrigen_comboBox);
             monedaOrigen_comboBox.setVisibleRowCount(5);
             monedaOrigen_comboBox.setEditable(false);
 
@@ -93,7 +92,6 @@ public class ConverterController implements Initializable {
 
 
     }
-
     /**
      * Este metodo nos permitira intercambiar los simbolos de las mendas para que la conversion se reversible
      *
@@ -129,6 +127,11 @@ public class ConverterController implements Initializable {
         alert.setContentText("Por favor rellene todos los campos");
         alert.showAndWait();
     }
+
+    /**
+     *Esta clase permitira mantener la correspondiencia  entre los simbolos de las monedas y
+     * y su significado
+     */
     class Pair {
         String value1;
         String value2;
@@ -139,6 +142,11 @@ public class ConverterController implements Initializable {
         }
     }
 
+    /**
+     * Lo que hace este metodo es ordenar de manera alfabetica todas las monedas y sus simbolos para luego mostrarlos en la combo box
+     * @param listCurrency lista de toda las monedas
+     * @param moneda donde se guardara la lista
+     */
     private void listSymbolNsignification(List<Currency> listCurrency,ComboBox<String> moneda) {
         List<String> listSymbols = currencyService.getAllSymbols(listCurrency);
         List<String> listSignification = currencyService.getSignification(listCurrency);
@@ -157,8 +165,24 @@ public class ConverterController implements Initializable {
             sortedlistSignification.add(pair.value2);
         }
         for (int i = 0; i < sortedlistSymbols.size(); i++) {
-            String listaOr = sortedlistSymbols.get(i) + " - " + sortedlistSignification.get(i);
-            moneda.getItems().add(listaOr);
+            String sortedList = sortedlistSymbols.get(i) + " - " + sortedlistSignification.get(i);
+            moneda.getItems().add(sortedList);
         }
+    }
+    private void filterMonedas( ObservableList<String> list, ComboBox<String> moneda){
+        FilteredList<String> filteredList = new FilteredList<>(list, s -> true);
+        moneda.setItems(filteredList);
+        filterMonedaOrigen_TextField.textProperty().addListener((observable, oldValue, newValue) -> {
+            moneda.setPromptText(newValue);
+            filteredList.setPredicate(elemento -> {
+                // Si el filtro está vacío, muestra todos los elementos
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                // Compara el elemento con el filtro (ignorando mayúsculas y minúsculas)
+                String filtroEnMinusculas = newValue.toLowerCase();
+                return elemento.toLowerCase().contains(filtroEnMinusculas);
+            });
+        });
     }
 }
