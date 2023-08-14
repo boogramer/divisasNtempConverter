@@ -1,13 +1,11 @@
-package com.converter.divisasntempconverter.controller;
+package com.converter.divisasConverter.controller;
 
-import com.converter.divisasntempconverter.conectionAPI.ConectionToAPI;
-import com.converter.divisasntempconverter.conectionAPI.JsonConversion;
-import com.converter.divisasntempconverter.models.Currency;
-import com.converter.divisasntempconverter.respositories.Converter;
-import com.converter.divisasntempconverter.respositories.ConverterImp;
-import com.converter.divisasntempconverter.services.CurrencyService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.converter.divisasConverter.conectionAPI.ConectionToAPI;
+import com.converter.divisasConverter.conectionAPI.JsonConversion;
+import com.converter.divisasConverter.models.Currency;
+import com.converter.divisasConverter.respositories.Converter;
+import com.converter.divisasConverter.respositories.ConverterImp;
+import com.converter.divisasConverter.services.CurrencyService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,7 +19,6 @@ import java.util.logging.Level;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.stream.Collectors;
 
 public class ConverterController implements Initializable {
     @FXML
@@ -82,8 +79,6 @@ public class ConverterController implements Initializable {
             currencyService = new CurrencyService(converter);
 
             listCurrency = currencyService.getAllCurrencies();
-            List<String> listSymbols = currencyService.getAllSymbols(listCurrency);
-            List<String> listSignification = currencyService.getSignification(listCurrency);
 
             listSymbolNsignification(listCurrency, monedaOrigen_comboBox);
             monedaOrigen_comboBox.setVisibleRowCount(5);
@@ -104,7 +99,7 @@ public class ConverterController implements Initializable {
      *
      * @param event
      */
-    public void swapCurrency(ActionEvent event) {
+        public void swapCurrency(ActionEvent event) {
         String monedaDes = monedaDestino_comboBox.getValue();
         String monedaOr = monedaOrigen_comboBox.getValue();
         monedaOrigen_comboBox.setValue(monedaDes);

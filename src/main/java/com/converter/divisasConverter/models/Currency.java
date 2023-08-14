@@ -1,4 +1,4 @@
-package com.converter.divisasntempconverter.models;
+package com.converter.divisasConverter.models;
 
 public class Currency {
     private String symbol;

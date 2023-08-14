@@ -1,13 +1,12 @@
-package com.converter.divisasntempconverter.respositories;
+package com.converter.divisasConverter.respositories;
 
-import com.converter.divisasntempconverter.conectionAPI.JsonConversion;
-import com.converter.divisasntempconverter.conectionAPI.ConectionToAPI;
-import com.converter.divisasntempconverter.models.Currency;
+import com.converter.divisasConverter.conectionAPI.JsonConversion;
+import com.converter.divisasConverter.conectionAPI.ConectionToAPI;
+import com.converter.divisasConverter.models.Currency;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 public class ConverterImp implements Converter {

@@ -1,11 +1,10 @@
-package com.converter.divisasntempconverter.services;
+package com.converter.divisasConverter.services;
 
-import com.converter.divisasntempconverter.models.Currency;
-import com.converter.divisasntempconverter.respositories.Converter;
+import com.converter.divisasConverter.models.Currency;
+import com.converter.divisasConverter.respositories.Converter;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  *

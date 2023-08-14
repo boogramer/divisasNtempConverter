@@ -1,4 +1,4 @@
-package com.converter.divisasntempconverter.conectionAPI;
+package com.converter.divisasConverter.conectionAPI;
 
 import java.io.BufferedReader;
 import java.io.IOException;

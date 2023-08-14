@@ -1,4 +1,4 @@
-package com.converter.divisasntempconverter.conectionAPI;
+package com.converter.divisasConverter.conectionAPI;
 
 import org.json.JSONObject;
 

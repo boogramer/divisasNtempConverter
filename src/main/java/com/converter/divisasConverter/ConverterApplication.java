@@ -1,4 +1,4 @@
-package com.converter.divisasntempconverter;
+package com.converter.divisasConverter;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
