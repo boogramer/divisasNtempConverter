@@ -107,8 +107,8 @@ public class ConverterController implements Initializable {
         public void swapCurrency(ActionEvent event) {
         String monedaDes = monedaDestino_comboBox.getValue();
         String monedaOr = monedaOrigen_comboBox.getValue();
-        filterMonedaDestino_TextField.setPromptText("");
-        filterMonedaOrigen_TextField.setPromptText("");
+        filterMonedaDestino_TextField.setText("");
+        filterMonedaOrigen_TextField.setText("");
         monedaOrigen_comboBox.setValue(monedaDes);
         monedaDestino_comboBox.setValue(monedaOr);
     }
