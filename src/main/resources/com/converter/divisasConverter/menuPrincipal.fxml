@@ -54,7 +54,7 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Button>
-                        <Button fx:id="intercambiarMoneda_button" layoutX="260.0" layoutY="175.0" mnemonicParsing="false">
+                        <Button fx:id="intercambiarMoneda_button" layoutX="260.0" layoutY="175.0" mnemonicParsing="false" onAction="#swapCurrency">
                            <graphic>
                               <ImageView fx:id="intercambiarMoneda_img" fitHeight="67.0" fitWidth="70.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
