@@ -6,6 +6,7 @@ import com.converter.divisasConverter.models.Currency;
 import com.converter.divisasConverter.respositories.Converter;
 import com.converter.divisasConverter.respositories.ConverterImp;
 import com.converter.divisasConverter.services.CurrencyService;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -79,7 +80,7 @@ public class ConverterController implements Initializable {
             listCurrency = currencyService.getAllCurrencies();
 
             listSymbolNsignification(listCurrency, monedaOrigen_comboBox);
-            filterMonedas(listCurrency, monedaOrigen_comboBox);
+            filterMonedas(listCurrency, monedaOrigen_comboBox,filterMonedaOrigen_TextField);
             monedaOrigen_comboBox.setVisibleRowCount(5);
             monedaOrigen_comboBox.setEditable(false);
 
@@ -169,10 +170,18 @@ public class ConverterController implements Initializable {
             moneda.getItems().add(sortedList);
         }
     }
-    private void filterMonedas( ObservableList<String> list, ComboBox<String> moneda){
+
+    /**
+     * loq que hace este metodo es bsucar y filtrar la moneda que se encuentra dentro de la comboox
+     * @param list lista a ordenar
+     * @param moneda Combobox moneda origenn/destino
+     * @param filterMoneda TextField dondse se ingresara la moneda a buscar
+     */
+    private void filterMonedas( List<? extends  Object> listCurrency, ComboBox<String> moneda, TextField filterMoneda){
+        ObservableList<String> list = FXCollections.observableArrayList(listCurrency);
         FilteredList<String> filteredList = new FilteredList<>(list, s -> true);
         moneda.setItems(filteredList);
-        filterMonedaOrigen_TextField.textProperty().addListener((observable, oldValue, newValue) -> {
+        filterMoneda.textProperty().addListener((observable, oldValue, newValue) -> {
             moneda.setPromptText(newValue);
             filteredList.setPredicate(elemento -> {
                 // Si el filtro está vacío, muestra todos los elementos
@@ -180,8 +189,8 @@ public class ConverterController implements Initializable {
                     return true;
                 }
                 // Compara el elemento con el filtro (ignorando mayúsculas y minúsculas)
-                String filtroEnMinusculas = newValue.toLowerCase();
-                return elemento.toLowerCase().contains(filtroEnMinusculas);
+                String filterLowerCase = newValue.toLowerCase();
+                return elemento.toLowerCase().contains(filterLowerCase);
             });
         });
     }
