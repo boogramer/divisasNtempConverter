@@ -25,6 +25,42 @@ import java.net.URL;
 
 public class ConverterController implements Initializable {
     @FXML
+    private Label C_label;
+
+    @FXML
+    private Label F_label;
+
+    @FXML
+    private Label K_label;
+
+    @FXML
+    private Label R_label;
+
+    @FXML
+    private Label celsius_label;
+
+    @FXML
+    private Label kelvin_label;
+
+    @FXML
+    private Label fahrenheit_label;
+
+    @FXML
+    private Label rankine_label;
+
+    @FXML
+    private TextField kelvin_textArea;
+
+    @FXML
+    private TextField celsius_textArea;
+
+    @FXML
+    private TextField fahrenheit_textArea;
+
+    @FXML
+    private TextField rankine_textArea;
+
+    @FXML
     private Tab bienvenido_tab;
 
     @FXML
@@ -103,6 +139,7 @@ public class ConverterController implements Initializable {
      *
      * @param event
      */
+    @FXML
         public void swapCurrency(ActionEvent event) {
         String monedaDes = monedaDestino_comboBox.getValue();
         String monedaOr = monedaOrigen_comboBox.getValue();
@@ -115,6 +152,7 @@ public class ConverterController implements Initializable {
     /**
      * Este metodo nos permitira ejecutar la coonversion
      */
+    @FXML
     public void exchangeCurrency(ActionEvent event) throws IOException {
         try {
             String from = monedaOrigen_comboBox.getSelectionModel().getSelectedItem().toString().substring(0,3);

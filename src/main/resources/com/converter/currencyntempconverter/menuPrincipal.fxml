@@ -5,10 +5,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="mainDashboard_Sp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.converter.currencyntempconverter.controller.ConverterController">
+<StackPane fx:id="mainDashboard_Sp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.converter.currencyntempconverter.controller.ConverterController">
    <children>
       <TabPane fx:id="dashboard_tp" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -25,7 +23,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Text layoutX="38.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido a mi conversor de Divisas y Temperatura. Puedes escoger que conversor vas a usar haciendo click en las pestañas." wrappingWidth="524.1484375">
+                        <Text layoutX="38.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bienvenido a mi conversor de Divisas y Temperatura. Puedes escoger que conversor vas a usar haciendo click en las pestañas." wrappingWidth="524.1484375">
                            <font>
                               <Font name="Consolas" size="14.0" />
                            </font>
@@ -77,41 +75,19 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Text layoutX="169.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ingrese la temperatura y la unidad">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Text>
-                        <TextArea fx:id="inputTemp_txtA" layoutX="243.0" layoutY="38.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="37.0" prefWidth="114.0" promptText="120">
-                           <font>
-                              <Font size="13.0" />
-                           </font></TextArea>
-                        <RadioButton layoutX="70.0" layoutY="103.0" mnemonicParsing="false" selected="true" text="Grados Celsius" />
-                        <RadioButton layoutX="241.0" layoutY="103.0" mnemonicParsing="false" text="Grados Fahrenheit" />
-                        <RadioButton layoutX="431.0" layoutY="103.0" mnemonicParsing="false" text="Kelvin" />
-                        <Text layoutX="253.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Conversiones">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Text>
-                        <Label fx:id="grCel_lab" layoutX="177.0" layoutY="189.0" prefHeight="29.0" prefWidth="76.0" />
-                        <Text layoutX="299.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grados Celsius">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Text>
-                        <Label fx:id="grFa_lab" layoutX="177.0" layoutY="229.0" prefHeight="29.0" prefWidth="76.0" />
-                        <Text layoutX="299.0" layoutY="248.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Grados Fahrenheit">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Text>
-                        <Label fx:id="kelvin_lab" layoutX="177.0" layoutY="271.0" prefHeight="29.0" prefWidth="76.0" />
-                        <Text layoutX="299.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kelvin">
-                           <font>
-                              <Font name="Consolas" size="14.0" />
-                           </font>
-                        </Text>
+                        <TextField fx:id="celsius_textArea" layoutX="103.0" layoutY="110.0" prefHeight="25.0" prefWidth="107.0" promptText="150" />
+                        <Label fx:id="C_label" layoutX="222.0" layoutY="114.0" text="°C" />
+                        <Label fx:id="celsius_label" layoutX="54.0" layoutY="114.0" prefHeight="17.0" prefWidth="42.0" text="Celsius" />
+                        <TextField fx:id="kelvin_textArea" layoutX="421.0" layoutY="110.0" prefHeight="25.0" prefWidth="107.0" />
+                        <Label fx:id="K_label" layoutX="540.0" layoutY="114.0" text="K" />
+                        <Label fx:id="kelvin_label" layoutX="372.0" layoutY="114.0" prefHeight="17.0" prefWidth="42.0" text="Kelvin" />
+                        <TextField fx:id="fahrenheit_textArea" layoutX="103.0" layoutY="239.0" prefHeight="25.0" prefWidth="107.0" />
+                        <Label fx:id="F_label" layoutX="222.0" layoutY="243.0" text="°F" />
+                        <Label fx:id="fahrenheit_label" layoutX="33.0" layoutY="243.0" prefHeight="17.0" prefWidth="63.0" text="Fahrenheit" />
+                        <TextField fx:id="rankine_textArea" layoutX="421.0" layoutY="239.0" prefHeight="25.0" prefWidth="107.0" />
+                        <Label fx:id="R_label" layoutX="540.0" layoutY="243.0" text="°R" />
+                        <Label fx:id="rankine_label" layoutX="370.0" layoutY="243.0" prefHeight="17.0" prefWidth="47.0" text="Rankine" />
+                        <Text layoutX="43.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Solo ingrese la temperatura en cualquiera de las campos de abajo y se convertira en tiempo real!" />
                      </children>
                   </AnchorPane>
               </content>
