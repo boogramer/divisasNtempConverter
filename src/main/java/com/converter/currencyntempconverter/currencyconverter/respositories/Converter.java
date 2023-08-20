@@ -1,6 +1,6 @@
-package com.converter.divisasConverter.respositories;
+package com.converter.currencyntempconverter.currencyconverter.respositories;
 
-import com.converter.divisasConverter.models.Currency;
+import com.converter.currencyntempconverter.currencyconverter.models.Currency;
 
 import java.io.IOException;
 import java.net.MalformedURLException;

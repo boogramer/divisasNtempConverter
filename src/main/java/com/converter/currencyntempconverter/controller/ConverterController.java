@@ -1,11 +1,11 @@
-package com.converter.divisasConverter.controller;
+package com.converter.currencyntempconverter.controller;
 
-import com.converter.divisasConverter.conectionAPI.ConectionToAPI;
-import com.converter.divisasConverter.conectionAPI.JsonConversion;
-import com.converter.divisasConverter.models.Currency;
-import com.converter.divisasConverter.respositories.Converter;
-import com.converter.divisasConverter.respositories.ConverterImp;
-import com.converter.divisasConverter.services.CurrencyService;
+import com.converter.currencyntempconverter.currencyconverter.conectionAPI.ConectionToAPI;
+import com.converter.currencyntempconverter.currencyconverter.conectionAPI.JsonConversion;
+import com.converter.currencyntempconverter.currencyconverter.models.Currency;
+import com.converter.currencyntempconverter.currencyconverter.respositories.Converter;
+import com.converter.currencyntempconverter.currencyconverter.respositories.ConverterImp;
+import com.converter.currencyntempconverter.currencyconverter.services.CurrencyService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -13,7 +13,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 

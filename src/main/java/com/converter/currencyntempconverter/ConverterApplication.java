@@ -1,4 +1,4 @@
-package com.converter.divisasConverter;
+package com.converter.currencyntempconverter;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

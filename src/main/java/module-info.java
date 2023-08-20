@@ -6,8 +6,8 @@ module com.converter.divisasntempconverter {
     requires org.json;
     requires java.logging;
 
-    opens com.converter.divisasConverter to javafx.fxml;
-    exports com.converter.divisasConverter;
-    exports com.converter.divisasConverter.controller;
-    opens com.converter.divisasConverter.controller to javafx.fxml;
+    opens com.converter.currencyntempconverter to javafx.fxml;
+    exports com.converter.currencyntempconverter;
+    exports com.converter.currencyntempconverter.controller;
+    opens com.converter.currencyntempconverter.controller to javafx.fxml;
 }

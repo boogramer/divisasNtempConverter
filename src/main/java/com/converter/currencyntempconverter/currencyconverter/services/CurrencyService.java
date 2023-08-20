@@ -1,7 +1,7 @@
-package com.converter.divisasConverter.services;
+package com.converter.currencyntempconverter.currencyconverter.services;
 
-import com.converter.divisasConverter.models.Currency;
-import com.converter.divisasConverter.respositories.Converter;
+import com.converter.currencyntempconverter.currencyconverter.models.Currency;
+import com.converter.currencyntempconverter.currencyconverter.respositories.Converter;
 
 import java.io.IOException;
 import java.util.List;
