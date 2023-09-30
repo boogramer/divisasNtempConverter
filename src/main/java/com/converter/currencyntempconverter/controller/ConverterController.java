@@ -6,6 +6,8 @@ import com.converter.currencyntempconverter.currencyconverter.models.Currency;
 import com.converter.currencyntempconverter.currencyconverter.respositories.Converter;
 import com.converter.currencyntempconverter.currencyconverter.respositories.ConverterImp;
 import com.converter.currencyntempconverter.currencyconverter.services.CurrencyService;
+import com.converter.currencyntempconverter.tempconverter.ConvertTemp;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -49,16 +51,16 @@ public class ConverterController implements Initializable {
     private Label rankine_label;
 
     @FXML
-    private TextField kelvin_textArea;
+    private TextField kelvin_txtfield;
 
     @FXML
-    private TextField celsius_textArea;
+    private TextField celsius_txtfield;
 
     @FXML
-    private TextField fahrenheit_textArea;
+    private TextField fahrenheit_txtfield;
 
     @FXML
-    private TextField rankine_textArea;
+    private TextField rankine_txtfield;
 
     @FXML
     private Tab bienvenido_tab;
@@ -102,12 +104,91 @@ public class ConverterController implements Initializable {
     List<Currency> listCurrency;
     List<String> resultListOr = new ArrayList<>();
     List<String> resultListDes = new ArrayList<>();
+    private ConvertTemp tempConverter;
 
     @Override
     public void initialize(URL uri, ResourceBundle resourceBundle) {
+        
+        // Agregar un ChangeListener al textProperty del TextField de Celsius
+        celsius_txtfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                // Convertir a Rankine
+                double rankine = Double.parseDouble(newValue) * 1.8 + 491.67;
+                rankine_txtfield.setText(String.format("%.2f", rankine));
+
+                // Convertir a Kelvin
+                double kelvin = Double.parseDouble(newValue) + 273.15;
+                kelvin_txtfield.setText(String.format("%.2f", kelvin));
+
+                // Convertir a Fahrenheit
+                double fahrenheit = Double.parseDouble(newValue) * 1.8 + 32;
+                fahrenheit_txtfield.setText(String.format("%.2f", fahrenheit));
+            } catch (NullPointerException e) {
+                System.out.println("Llena los campos!!!");
+                e.printStackTrace();
+            }
+        });
+
+// Agregar un ChangeListener al textProperty del TextField de Rankine
+        rankine_txtfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                // Convertir a Celsius
+                double celsius = (Double.parseDouble(newValue) - 491.67) / 1.8;
+                celsius_txtfield.setText(String.format("%.2f", celsius));
+
+                // Convertir a Kelvin
+                double kelvin = Double.parseDouble(newValue) * 5 / 9;
+                kelvin_txtfield.setText(String.format("%.2f", kelvin));
+
+                // Convertir a Fahrenheit
+                double fahrenheit = Double.parseDouble(newValue) - 459.67;
+                fahrenheit_txtfield.setText(String.format("%.2f", fahrenheit));
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+        });
+
+// Agregar un ChangeListener al textProperty del TextField de Kelvin
+        kelvin_txtfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                // Convertir a Celsius
+                double celsius = Double.parseDouble(newValue) - 273.15;
+                celsius_txtfield.setText(String.format("%.2f", celsius));
+
+                // Convertir a Rankine
+                double rankine = Double.parseDouble(newValue) * 1.8;
+                rankine_txtfield.setText(String.format("%.2f", rankine));
+
+                // Convertir a Fahrenheit
+                double fahrenheit = Double.parseDouble(newValue) * 1.8 - 459.67;
+                fahrenheit_txtfield.setText(String.format("%.2f", fahrenheit));
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+        });
+
+// Agregar un ChangeListener al textProperty del TextField de Fahrenheit
+        fahrenheit_txtfield.textProperty().addListener((observable, oldValue, newValue) -> {
+            try {
+                // Convertir a Celsius
+                double celsius = (Double.parseDouble(newValue) - 32) / 1.8;
+                celsius_txtfield.setText(String.format("%.2f", celsius));
+
+                // Convertir a Rankine
+                double rankine = Double.parseDouble(newValue) + 459.67;
+                rankine_txtfield.setText(String.format("%.2f", rankine));
+
+                // Convertir a Kelvin
+                double kelvin = (Double.parseDouble(newValue) + 459.67) * 5 / 9;
+                kelvin_txtfield.setText(String.format("%.2f", kelvin));
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+        });
+
         //intercambiarMoneda_button.setOnAction(this::swapCurrency); // para intercambiar los simbolos de las monedas siendo reversible la coversiorn
         // implemetnacon de la API
-        try {
+        /*try {
             String url = "https://api.apilayer.com/fixer";
             String apiKey = "esPBXLyRPRajzavpmV6bfPFFbkCRkoCF";
             ConectionToAPI contectiontoApi = new ConectionToAPI(url, apiKey);
@@ -130,9 +211,7 @@ public class ConverterController implements Initializable {
 
         } catch (IOException ex) {
             Logger.getLogger(ConverterController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-
+        }*/
     }
     /**
      * Este metodo nos permitira intercambiar los simbolos de las mendas para que la conversion se reversible

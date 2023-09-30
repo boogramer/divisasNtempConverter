@@ -75,16 +75,16 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TextField fx:id="celsius_textArea" layoutX="103.0" layoutY="110.0" prefHeight="25.0" prefWidth="107.0" promptText="150" />
+                        <TextField fx:id="celsius_txtfield" layoutX="103.0" layoutY="110.0" prefHeight="25.0" prefWidth="107.0" promptText="150" />
                         <Label fx:id="C_label" layoutX="222.0" layoutY="114.0" text="°C" />
                         <Label fx:id="celsius_label" layoutX="54.0" layoutY="114.0" prefHeight="17.0" prefWidth="42.0" text="Celsius" />
-                        <TextField fx:id="kelvin_textArea" layoutX="421.0" layoutY="110.0" prefHeight="25.0" prefWidth="107.0" />
+                        <TextField fx:id="kelvin_txtfield" layoutX="421.0" layoutY="110.0" prefHeight="25.0" prefWidth="107.0" />
                         <Label fx:id="K_label" layoutX="540.0" layoutY="114.0" text="K" />
                         <Label fx:id="kelvin_label" layoutX="372.0" layoutY="114.0" prefHeight="17.0" prefWidth="42.0" text="Kelvin" />
-                        <TextField fx:id="fahrenheit_textArea" layoutX="103.0" layoutY="239.0" prefHeight="25.0" prefWidth="107.0" />
+                        <TextField fx:id="fahrenheit_txtfield" layoutX="103.0" layoutY="239.0" prefHeight="25.0" prefWidth="107.0" />
                         <Label fx:id="F_label" layoutX="222.0" layoutY="243.0" text="°F" />
                         <Label fx:id="fahrenheit_label" layoutX="33.0" layoutY="243.0" prefHeight="17.0" prefWidth="63.0" text="Fahrenheit" />
-                        <TextField fx:id="rankine_textArea" layoutX="421.0" layoutY="239.0" prefHeight="25.0" prefWidth="107.0" />
+                        <TextField fx:id="rankine_txtfield" layoutX="421.0" layoutY="239.0" prefHeight="25.0" prefWidth="107.0" />
                         <Label fx:id="R_label" layoutX="540.0" layoutY="243.0" text="°R" />
                         <Label fx:id="rankine_label" layoutX="370.0" layoutY="243.0" prefHeight="17.0" prefWidth="47.0" text="Rankine" />
                         <Text layoutX="43.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¡Solo ingrese la temperatura en cualquiera de las campos de abajo y se convertira en tiempo real!" />
