@@ -2,7 +2,8 @@
 
 En este desafio se nos ha planteado hacer un conversor de divisas y un conversor de monedas.  
 
-![conversor_temp](https://github.com/boogramer/divisasNtempConverter/assets/125413596/2811295c-fc2a-49dd-a1aa-ed26d5fdf30c)
+
+![conversor](https://github.com/boogramer/divisasNtempConverter/assets/125413596/f9a3fef5-7b48-451f-9c05-7e0fe01b5ab5)
 
 
 Para el conversor de monedas he usado Fixer Api de la pagina [apilayer🖥](apilayer.com) para obtener el valor actual de las divisas.
